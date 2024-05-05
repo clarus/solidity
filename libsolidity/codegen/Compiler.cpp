@@ -23,8 +23,8 @@
 
 #include <libsolidity/codegen/Compiler.h>
 
-#include <libsolidity/codegen/ContractCompiler.h>
 #include <libevmasm/Assembly.h>
+#include <libsolidity/codegen/ContractCompiler.h>
 
 using namespace solidity;
 using namespace solidity::frontend;
@@ -32,9 +32,10 @@ using namespace solidity::frontend;
 void Compiler::compileContract(
 	ContractDefinition const& _contract,
 	std::map<ContractDefinition const*, std::shared_ptr<Compiler const>> const& _otherCompilers,
-	bytes const& _metadata
-)
+	bytes const& _metadata)
 {
+	printf("Compiler::compileContract\n");
+	exit(1);
 	ContractCompiler runtimeCompiler(nullptr, m_runtimeContext, m_optimiserSettings);
 	runtimeCompiler.compileContract(_contract, _otherCompilers);
 	m_runtimeContext.appendToAuxiliaryData(_metadata);

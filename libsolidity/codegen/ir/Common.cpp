@@ -150,7 +150,7 @@ std::string dispenseLocationComment(langutil::SourceLocation const& _location, I
 		_context.soliditySourceProvider()
 	);
 
-	return debugInfo.empty() ? "" : "/// " + debugInfo;
+	return debugInfo.empty() ? "" : "///--- " + debugInfo;
 }
 
 std::string dispenseLocationComment(ASTNode const& _node, IRGenerationContext& _context)

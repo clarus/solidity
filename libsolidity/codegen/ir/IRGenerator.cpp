@@ -851,7 +851,7 @@ void IRGenerator::generateConstructors(ContractDefinition const& _contract)
 		m_context.functionCollector().createFunction(IRNames::constructor(*contract), [&]() {
 			Whiskers t(R"(
 				<astIDComment><sourceLocationComment>
-				function <functionName>(<params><comma><baseParams>) {
+				Definition <functionName>(<params><comma><baseParams>) {
 					<evalBaseArguments>
 					<sourceLocationComment>
 					<?hasNextConstructor> <nextConstructor>(<nextParams>) </hasNextConstructor>
@@ -884,6 +884,7 @@ void IRGenerator::generateConstructors(ContractDefinition const& _contract)
 			t("baseParams", joinHumanReadable(baseParams));
 			t("comma", !params.empty() && !baseParams.empty() ? ", " : "");
 			t("functionName", IRNames::constructor(*contract));
+			// t("functionName", "hellllo");
 			std::pair<std::string, std::map<ContractDefinition const*, std::vector<std::string>>> evaluatedArgs = evaluateConstructorArguments(*contract);
 			baseConstructorParams.insert(evaluatedArgs.second.begin(), evaluatedArgs.second.end());
 			t("evalBaseArguments", evaluatedArgs.first);
